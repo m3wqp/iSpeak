@@ -1,0 +1,116 @@
+.bg-color{
+    background-color: #eeeeee;
+}
+
+.app-wrapper {
+    display: grid;
+    grid-template-areas:
+    "head head"
+    "navbar main";
+
+    grid-template: 60px 2fr;
+    grid-template-columns: 2fr 10fr;
+}
+
+.header_grid {
+    grid-area: head;
+    background: #CCCCFF;
+}
+.header_grid a{
+    color: #3366CC;
+}
+
+.nav-bar_grid {
+    grid-area: navbar;
+}
+
+.main_grid {
+    grid-area: main;
+}
+
+
+
+
+.messages {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.yours {
+    align-items: flex-start;
+}
+
+.yours .message {
+    margin-right: 25%;
+    background-color: #eee;
+    position: relative;
+}
+
+.yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #eee;
+    border-bottom-right-radius: 15px;
+}
+.yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+}
+
+.mine {
+    align-items: flex-end;
+}
+
+.mine .message {
+    color: white;
+    margin-left: 25%;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    position: relative;
+}
+
+.mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+}
+
+.mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: #eeeeee;
+    border-bottom-left-radius: 10px;
+}

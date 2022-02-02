@@ -1,0 +1,15 @@
+.mainContainer{
+    margin-left: 2em;
+
+}
+
+span{
+    padding-top: 1em;
+    margin: 1em;
+}
+
+.contentMessage{
+    display: inline-block;
+    background: silver;
+    border-radius: 10%;
+}

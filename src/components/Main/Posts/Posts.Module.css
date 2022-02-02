@@ -1,0 +1,22 @@
+.postAvatar{
+    grid-area: Avatar;
+    width: 80px;
+    height: 100%;
+}
+.postContainer{
+    display: flex;
+    margin-top: 20px;
+    border: 1px solid #787878;
+}
+.postContent{
+    margin-left: 15px;
+}
+.postSpan{
+    grid-area: PostSpan;
+    font-size: 12px;
+}
+
+.postText{
+    margin-top: 1em;
+    grid-area: PostText;
+}
