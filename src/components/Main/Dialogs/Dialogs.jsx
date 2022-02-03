@@ -2,23 +2,22 @@ import React from "react";
 import Message from "./Message/Message";
 import Profile from "./Profile/Profile";
 import style from "./Dialogs.module.css"
-import {addMessageActionCreator, onMessageChangeActionCreator} from "../../../state/dialogReducer";
 
 
 const Dialogs = (props) => {
 
+debugger
 
-  let AddMessage = () => {
-    props.dispatch(addMessageActionCreator(props.newMessage))
+  let AddMessage = (newMessage) => {
+   props.addMessage(newMessage)
   }
 
  let onMessageChange = (event) =>{
-    let newMessage = event.target.value
-    props.dispatch(onMessageChangeActionCreator(newMessage))
+    props.onMessageCahge(event)
  }
 
   let giveProfile = props.user.map(profile => <Profile id={profile.id} name={profile.user}/>);
-  let ViewMessage = props.messages.map(messages => <Message message={messages.message}/>);
+  let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);
 
 
 
@@ -38,7 +37,7 @@ const Dialogs = (props) => {
                    aria-label="Введите текст..."
                    aria-describedby="button-addon2"
                    onChange={onMessageChange}
-                   value={props.newMessage}
+                   value={props.messages.newMessageText}
             />
 
             <button

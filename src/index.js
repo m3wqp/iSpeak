@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
  let rerenderEntireTree = (props) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App test={props} dispatch={store.dispatch.bind(store)} />
+      <App test={store}  store={props} dispatch={store.dispatch.bind(store)} />
     </React.StrictMode>,
     document.getElementById('root')
   );
