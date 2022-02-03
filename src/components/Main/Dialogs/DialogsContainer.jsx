@@ -17,11 +17,9 @@ const DialogsContainer = (props) => {
   }
 
 
-  return (
-    <>
-      <Dialogs addMessage={addMessage} onMessageCahge={onMessageChange} user={state.profileCon.userProfile} messages={state.dialogCon}/>
-    </>
-  );
+  return <Dialogs addMessage={addMessage} onMessageCahge={onMessageChange} user={state.profileCon.userProfile} messages={state.dialogCon}/>
+
+
 }
 
 export default DialogsContainer;

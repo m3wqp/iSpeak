@@ -4,7 +4,9 @@ import Posts from "./Posts";
 
 const ViewPosts = (props) => {
 
-  let propPostData = props.userPost.map(post => <Posts name={post.name} lastname={post.lastname} post={post.post}/>)
+
+
+  let propPostData = props.userPost.postData.map(post => <Posts name={post.name} lastname={post.lastname} post={post.post}/>)
 
   let onAddPostChange = () => {
     props.addPost()
@@ -25,7 +27,7 @@ const ViewPosts = (props) => {
                aria-label="Введите текст..."
                aria-describedby="button-addon2"
                onChange={onTextPostChange}
-               value={props.postNewText}
+               value={props.userPost.postText}
 
         />
 

@@ -16,11 +16,9 @@ let state = props.store.getState()
   }
 
 
-  return (
+  return <ViewPosts onPostChange={onPostChange} addPost={addPost} userPost={state.postCon}/>
 
-    <ViewPosts onPostChange={onPostChange} addPost={addPost} userPost={state.postCon.postData}/>
 
-  )
 }
 
 export default ViewPostsContainer;
