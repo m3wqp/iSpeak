@@ -1,24 +1,29 @@
 import React from "react";
 import ViewPosts from "./ViewPosts";
 import {addPostActionCreator, onPostChangeActionCreator} from "../../../state/postReducer";
+import {connect} from "react-redux";
 
-const ViewPostsContainer = (props) => {
 
-let state = props.store.getState()
-
-  let addPost = () => {
-    props.store.dispatch(addPostActionCreator());
+let mapStateToProps = (state) => {
+  return {
+    userPost: state.postCon
   }
-
-  let onPostChange = (event) => {
-    let inputValue = event.target.value
-    props.store.dispatch(onPostChangeActionCreator(inputValue))
-  }
-
-
-  return <ViewPosts onPostChange={onPostChange} addPost={addPost} userPost={state.postCon}/>
-
-
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addPost: () => {
+      dispatch(addPostActionCreator())
+    },
+    onPostChange: (event) => {
+      let inputValue = event.target.value
+      dispatch(onPostChangeActionCreator(inputValue))
+    }
+  }
+}
+
+
+const ViewPostsContainer = connect(mapStateToProps, mapDispatchToProps)(ViewPosts);
+
 
 export default ViewPostsContainer;
