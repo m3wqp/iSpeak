@@ -4,7 +4,7 @@ import style from "./Posts.Module.css"
 
 
 const Post = (props) => {
-  debugger
+
   return(
     <div className={style.postContainer}>
       <img className={style.postAvatar}

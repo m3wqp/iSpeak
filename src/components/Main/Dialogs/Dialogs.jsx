@@ -6,7 +6,7 @@ import style from "./Dialogs.module.css"
 
 const Dialogs = (props) => {
 
-debugger
+
 
   let AddMessage = (newMessage) => {
    props.addMessage(newMessage)
