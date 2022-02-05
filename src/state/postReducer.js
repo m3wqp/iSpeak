@@ -3,45 +3,49 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = {
 
-    postData: [
-      {
-        id: 1,
-        name: 'Regina',
-        lastname: 'Aps',
-        post: 'HELLO LOVE'
-      },
-      {
-        id: 2,
-        name: 'Vlad',
-        lastname: 'Kul',
-        post: 'body'
-      },
-      {
-        id: 3,
-        name: 'Aiy',
-        lastname: 'Kek',
-        post: 'nobody'
-      }
-    ],
-    postText: ''
+  postData: [
+    {
+      id: 1,
+      name: 'Regina',
+      lastname: 'Aps',
+      post: 'HELLO LOVE'
+    },
+    {
+      id: 2,
+      name: 'Vlad',
+      lastname: 'Kul',
+      post: 'body'
+    },
+    {
+      id: 3,
+      name: 'Aiy',
+      lastname: 'Kek',
+      post: 'nobody'
+    }
+  ],
+  postText: ''
 
 }
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       let newPost = {
         id: 5,
         name: 'Anton',
         lastname: 'Ml-bb',
         post: state.postText
       };
-      state.postData.push(newPost);
-      state.postText = ''
-      return state;
-    case UPDATE_NEW_POST_TEXT :
-      state.postText = action.newText
-      return state;
-
+      let stateCopy = {...state};
+      stateCopy.postData = [...state.postData]
+      stateCopy.postData.push(newPost);
+      stateCopy.postText = ''
+      return stateCopy;
+    }
+    case UPDATE_NEW_POST_TEXT : {
+      let stateCopy = {...state}
+      stateCopy.postText = action.newText
+      return stateCopy;
+    }
     default:
       return state;
   }

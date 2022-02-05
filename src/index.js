@@ -14,7 +14,7 @@ let rerenderEntireTree = (props) => {
     <React.StrictMode>
       <BrowserRouter>
         <Provider store={store}>
-          <App test={store} store={props} dispatch={store.dispatch.bind(store)}/>
+          <App test={store}/>
         </Provider>
       </BrowserRouter>
     </React.StrictMode>,
@@ -24,9 +24,6 @@ let rerenderEntireTree = (props) => {
 
 rerenderEntireTree(store.getState());
 
-store.subscribe(() => {
-  let state = store.getState()
-  rerenderEntireTree(state)
-})
+
 
 reportWebVitals();

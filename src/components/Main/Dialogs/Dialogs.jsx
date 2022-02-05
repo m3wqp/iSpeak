@@ -13,7 +13,7 @@ const Dialogs = (props) => {
   }
 
  let onMessageChange = (event) =>{
-    props.onMessageCahge(event)
+    props.onMessageChange(event)
  }
 
   let giveProfile = props.user.map(profile => <Profile id={profile.id} name={profile.user}/>);

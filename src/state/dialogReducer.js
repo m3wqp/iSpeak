@@ -3,31 +3,35 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
 
-    userMessage: [
-      {id: 1, message: 'Привет'},
-      {id: 2, message: 'Аууу'},
-      {id: 3, message: 'Как дела'},
-      {id: 4, message: 'Очнись'},
-    ],
-    newMessageText: ''
+  userMessage: [
+    {id: 1, message: 'Привет'},
+    {id: 2, message: 'Аууу'},
+    {id: 3, message: 'Как дела'},
+    {id: 4, message: 'Очнись'},
+  ],
+  newMessageText: ''
 
 }
 
 
 const dialogReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case ADD_MESSAGE: {
       let newMessage = {
         id: 4,
         message: action.message
       }
-      state.userMessage.push(newMessage)
-      debugger
-      state.newMessageText = ''
-      return state;
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.newMessage
-      return state;
+      let stateCopy = {...state}
+      stateCopy.userMessage = [...state.userMessage]
+      stateCopy.userMessage.push(newMessage)
+      stateCopy.newMessageText = ''
+      return stateCopy;
+    }
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      let stateCopy = {...state}
+      stateCopy.newMessageText = action.newMessage
+      return stateCopy;
+    }
     default:
       return state;
   }
