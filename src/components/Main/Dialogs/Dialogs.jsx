@@ -8,8 +8,8 @@ const Dialogs = (props) => {
 
 
 
-  let AddMessage = (newMessage) => {
-   props.addMessage(newMessage)
+  let addMessage = () => {
+   props.addMessage()
   }
 
  let onMessageChange = (event) =>{
@@ -19,7 +19,7 @@ const Dialogs = (props) => {
   let giveProfile = props.user.map(profile => <Profile id={profile.id} name={profile.user}/>);
   let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);
 
-
+debugger
 
   return (
     <>
@@ -44,7 +44,7 @@ const Dialogs = (props) => {
               className="btn btn-outline-primary p"
               type="button"
               id="button-addon2"
-              onClick={ AddMessage }>
+              onClick={ addMessage }>
 
               Add Message
 

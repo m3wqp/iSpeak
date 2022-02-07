@@ -3,7 +3,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/Header/Header";
 import {Route} from "react-router-dom";
-import ViewNavBar from "./components/NavBar/ViewNavBar";
 import ViewPostsContainer from "./components/Main/Posts/ViewPostsContainer";
 import DialogsContainer from "./components/Main/Dialogs/DialogsContainer";
 import ViewNavBarContainer from "./components/NavBar/ViewNavBarContainer";

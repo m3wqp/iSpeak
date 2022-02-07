@@ -14,10 +14,10 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch, state) =>{
+let mapDispatchToProps = (dispatch) =>{
   return{
     addMessage:() => {
-      dispatch(addMessageActionCreator(state.dialogCon.newMessageText))
+      dispatch(addMessageActionCreator())
     },
     onMessageChange:(event) => {
       let newMessage = event.target.value
