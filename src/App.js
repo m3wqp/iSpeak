@@ -6,6 +6,7 @@ import {Route} from "react-router-dom";
 import ViewPostsContainer from "./components/Main/Posts/ViewPostsContainer";
 import DialogsContainer from "./components/Main/Dialogs/DialogsContainer";
 import ViewNavBarContainer from "./components/NavBar/ViewNavBarContainer";
+import UsersContainer from "./components/Main/Users/UsersContainer";
 
 
 function App(props) {
@@ -31,6 +32,10 @@ function App(props) {
                    />}/>
             <Route path='/posts'
                    render={() => <ViewPostsContainer
+
+                   />}/>
+            <Route path='/users'
+                   render={() => <UsersContainer
 
                    />}/>
           </main>

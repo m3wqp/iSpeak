@@ -1,5 +1,5 @@
-import postReducer from "./postReducer";
-import dialogReducer from "./dialogReducer";
+import postReducer from "./reducers/postReducer";
+import dialogReducer from "./reducers/dialogReducer";
 
 
 let store = {

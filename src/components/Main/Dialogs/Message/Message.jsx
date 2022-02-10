@@ -1,5 +1,4 @@
 import React from "react";
-import style from './Message.module.css'
 import '../../../../App.css'
 
 

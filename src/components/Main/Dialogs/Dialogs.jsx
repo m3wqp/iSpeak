@@ -19,7 +19,6 @@ const Dialogs = (props) => {
   let giveProfile = props.user.map(profile => <Profile id={profile.id} name={profile.user}/>);
   let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);
 
-debugger
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from "react";
 import ViewPosts from "./ViewPosts";
-import {addPostActionCreator, onPostChangeActionCreator} from "../../../state/postReducer";
+import {addPostActionCreator, onPostChangeActionCreator} from "../../../state/reducers/postReducer";
 import {connect} from "react-redux";
 
 

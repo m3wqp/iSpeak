@@ -1,0 +1,34 @@
+.userContainer{
+    border-bottom: solid 1px #787878;
+    display: flex;
+}
+
+.img{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 5em;
+    border-radius: 50%;
+}
+.infoContainer{
+    margin-top: 1em;
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    border: solid 2px green;
+    margin-top: 1em;
+    height: 2em;
+    background-color: greenyellow;
+    border-radius: 20px;
+    margin-right: 1em;
+}
+
+.btn_unFollow{
+    border: solid 2px darkred;
+    margin-top: 1em;
+    height: 2em;
+    background-color: red;
+    border-radius: 20px;
+    margin-right: 1em;
+}
