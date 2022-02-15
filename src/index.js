@@ -18,6 +18,7 @@ let rerenderEntireTree = (props) => {
         </Provider>
       </BrowserRouter>
     </React.StrictMode>,
+
     document.getElementById('root')
   );
 }
