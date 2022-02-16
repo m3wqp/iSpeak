@@ -1,6 +1,6 @@
 import React from "react";
 import Message from "./Message/Message";
-import Profile from "./Profile/Profile";
+import MessageProfile from "./MessageProfile/MessageProfile";
 import style from "./Dialogs.module.css"
 
 
@@ -16,7 +16,7 @@ const Dialogs = (props) => {
     props.onMessageChange(event)
  }
 
-  let giveProfile = props.user.map(profile => <Profile id={profile.id} name={profile.user}/>);
+  let giveProfile = props.user.map(profile => <MessageProfile id={profile.id} name={profile.user}/>);
   let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);
 
 

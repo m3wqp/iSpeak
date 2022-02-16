@@ -1,10 +1,9 @@
 import React from "react";
-import style from "./Profile.module.css"
 import {NavLink} from "react-router-dom";
 
 
 
-const Profile = (p) => {
+const MessageProfile = (p) => {
   return (
     <div>
 
@@ -18,4 +17,4 @@ const Profile = (p) => {
   );
 }
 
-export default Profile;
+export default MessageProfile;

@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./User.Module.css";
 import userIcon from "../../../assets/img/userDefault.png";
+import {NavLink} from "react-router-dom";
 
 
 const User = (props) => {
 
-  debugger
 
   const addUser = () => {
     props.addUser()
@@ -41,13 +41,15 @@ const User = (props) => {
 
     {
       props.user.users.map(user => <div key={user.id} className={style.userContainer}>
+<NavLink to={'posts/' + user.id}>
+  <div>
+    <img src={user.photos.small != null ? user.photos.small : userIcon}
+         alt="Аватар"
+         className={style.img}
+    />
+  </div>
+</NavLink>
 
-        <div>
-          <img src={user.photos.small != null ? user.photos.small : userIcon}
-               alt="Аватар"
-               className={style.img}
-          />
-        </div>
         <div>
           <div className={style.infoContainer}>
             <span>{user.name}</span>

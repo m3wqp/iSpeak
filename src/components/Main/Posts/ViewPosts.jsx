@@ -5,19 +5,20 @@ import Posts from "./Posts";
 const ViewPosts = (props) => {
 
 
-
-  let propPostData = props.userPost.postData.map(post => <Posts name={post.name} lastname={post.lastname} post={post.post}/>)
+  let propPostData = props.userPost.postData.map(post => <Posts name={post.name}
+                                                                lastname={post.lastname}
+                                                                post={post.post}/>)
 
   let onAddPostChange = () => {
     props.addPost()
   }
 
   let onTextPostChange = (event) => {
-    props.onPostChange(event)
+    let textValue = event.target.value
+    props.onPostChange(textValue)
   }
 
   return (
-
     <div>
       <div className="input-group mb-3 mt-5">
 
@@ -43,7 +44,6 @@ const ViewPosts = (props) => {
       </div>
       {propPostData}
     </div>
-
   )
 }
 
