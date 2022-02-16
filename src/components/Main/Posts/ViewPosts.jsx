@@ -3,19 +3,19 @@ import Posts from "./Posts";
 
 
 const ViewPosts = (props) => {
-
+debugger
 
   let propPostData = props.userPost.postData.map(post => <Posts name={post.name}
                                                                 lastname={post.lastname}
                                                                 post={post.post}/>)
 
   let onAddPostChange = () => {
-    props.addPost()
+    props.addPostActionCreator()
   }
 
   let onTextPostChange = (event) => {
     let textValue = event.target.value
-    props.onPostChange(textValue)
+    props.onPostChangeActionCreator(textValue)
   }
 
   return (

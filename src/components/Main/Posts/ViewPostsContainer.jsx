@@ -9,9 +9,7 @@ class PostComponent extends React.Component{
   render(){
     return(
       <ViewPosts
-        userPost={this.props.userPost}
-        addPost={this.props.addPostActionCreator}
-        onPostChange={this.props.onPostChangeActionCreator}
+        {...this.props}
       />
     )
   }
