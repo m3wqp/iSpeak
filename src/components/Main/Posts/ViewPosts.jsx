@@ -3,7 +3,7 @@ import Posts from "./Posts";
 
 
 const ViewPosts = (props) => {
-debugger
+
 
   let propPostData = props.userPost.postData.map(post => <Posts name={post.name}
                                                                 lastname={post.lastname}

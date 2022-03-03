@@ -2,36 +2,23 @@ import React from 'react';
 import {connect} from "react-redux";
 import {
   addUserAction,
-  follow, isFetchingAC,
+  follow, followThunk, getUsers, isFetchingAC, isToggleFollowAC,
   setCurrentPage,
   setUser,
-  unfollow
+  unfollow, unFollowThunk
 } from "../../../state/reducers/usersReducer";
-import axios from "axios";
 import User from "./User";
 import Feather from "../../../common/Spinner";
-
 
 
 class UserComponent extends React.Component {
 
   componentDidMount() {
-    this.props.isFetchingAC(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.countUser}`)
-      .then(response => {
-        this.props.isFetchingAC(false)
-        this.props.setUser(response.data.items)
-      })
+    this.props.getUsers(this.props.currentPage, this.props.countUser)
   }
 
   onChangeCurrentPage = (currentPage) => {
-    this.props.isFetchingAC(true)
-    this.props.setCurrentPage(currentPage);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${this.props.countUser}`)
-      .then(response => {
-        this.props.isFetchingAC(false)
-        this.props.setUser(response.data.items)
-      })
+    this.props.getUsers(currentPage, this.props.countUser)
   }
 
   addUser = () => {
@@ -43,7 +30,7 @@ class UserComponent extends React.Component {
 
     return <>
 
-        {this.props.isFetching ? <Feather/> : null}
+      {this.props.isFetching ? <Feather/> : null}
 
 
       <User
@@ -55,6 +42,10 @@ class UserComponent extends React.Component {
         onChangeCurrentPage={this.onChangeCurrentPage}
         onFollow={this.props.unfollow}
         followAC={this.props.follow}
+        toggleFollow={this.props.isToggleFollowAC}
+        followingInProgress={this.props.followingInProgress}
+        followThunk={this.props.followThunk}
+        unFollowThunk={this.props.unFollowThunk}
       />
     </>
   }
@@ -67,14 +58,13 @@ let mapStateToProps = (state) => {
     totalCount: state.users.totalCount,
     currentPage: state.users.currentPage,
     isFetching: state.users.isFetching,
+    followingInProgress: state.users.followingInProgress,
   }
 }
 
 
-
-
 const UsersContainer = connect(mapStateToProps,
-  {setUser, unfollow, addUserAction, follow, isFetchingAC, setCurrentPage})
+  {setUser, unfollow, addUserAction, follow, isFetchingAC, setCurrentPage, isToggleFollowAC, getUsers , followThunk,unFollowThunk})
 (UserComponent)
 
 export default UsersContainer;

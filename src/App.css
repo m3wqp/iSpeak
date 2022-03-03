@@ -1,5 +1,5 @@
-.bg-color{
-    background-color: #eeeeee;
+.bg-color {
+    background-color:#C5DDEB;
 }
 
 .app-wrapper {
@@ -16,19 +16,24 @@
     grid-area: head;
     background: #CCCCFF;
 }
-.header_grid a{
+
+.header_grid a {
     color: #3366CC;
 }
 
 .nav-bar_grid {
+    background-color: white;
     grid-area: navbar;
+    height: 93vh;
+    border: 2px solid #7d98b2;
+    border-top: 1px solid #7d98b2 ;
+    border-top-right-radius: 15px;
 }
 
 .main_grid {
     grid-area: main;
+    margin-left: 2em;
 }
-
-
 
 
 .messages {
@@ -66,6 +71,7 @@
     background: #eee;
     border-bottom-right-radius: 15px;
 }
+
 .yours .message.last:after {
     content: "";
     position: absolute;
@@ -111,6 +117,6 @@
     right: -10px;
     width: 10px;
     height: 20px;
-    background: #eeeeee;
+    background: #C5DDEB;
     border-bottom-left-radius: 10px;
 }

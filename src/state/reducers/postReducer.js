@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_PROFILE = 'SET_PROFILE';
 
 let initialState = {
 
@@ -23,7 +24,10 @@ let initialState = {
       post: 'nobody'
     }
   ],
-  postText: ''
+
+  postText: '',
+
+  proFilePost:null,
 
 }
 const postReducer = (state = initialState, action) => {
@@ -42,6 +46,12 @@ const postReducer = (state = initialState, action) => {
         postText: action.newText
       }
     }
+    case SET_PROFILE : {
+
+      return {
+        ...state, proFilePost: action.newProfile
+      }
+    }
     default:
       return state;
   }
@@ -51,5 +61,6 @@ const postReducer = (state = initialState, action) => {
 
 export const onPostChangeActionCreator = (inputValue) => ({type: UPDATE_NEW_POST_TEXT, newText: inputValue})
 export const addPostActionCreator = () => ({type: ADD_POST})
+export const setProfile = (newProfile) => ({type: SET_PROFILE , newProfile})
 
 export default postReducer;

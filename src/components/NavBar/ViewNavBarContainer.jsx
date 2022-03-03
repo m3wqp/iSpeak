@@ -1,7 +1,6 @@
 import React from "react";
-import NavBar from "./NavBar";
 import {connect} from "react-redux";
-import ViewNavBar from "./ViewNavBar";
+import NavBar from "./NavBar";
 
 
 
@@ -15,6 +14,6 @@ let mapStateToProps = (state) => {
 
 
 
-const ViewNavBarContainer = connect(mapStateToProps)(ViewNavBar)
+const ViewNavBarContainer = connect(mapStateToProps)(NavBar)
 
 export default ViewNavBarContainer;

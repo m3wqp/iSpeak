@@ -7,6 +7,7 @@ import ViewPostsContainer from "./components/Main/Posts/ViewPostsContainer";
 import DialogsContainer from "./components/Main/Dialogs/DialogsContainer";
 import ViewNavBarContainer from "./components/NavBar/ViewNavBarContainer";
 import UsersContainer from "./components/Main/Users/UsersContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 
 function App(props) {
@@ -14,34 +15,35 @@ function App(props) {
   return (
 
 
-      <div className='container'>
-        <div className='app-wrapper'>
+    <div className='container'>
+      <div className='app-wrapper'>
 
-          <header className='header_grid'>
-            <Header/>
-          </header>
+        <header className='header_grid'>
+          <HeaderContainer/>
+        </header>
 
-          <nav className='nav-bar_grid'>
-            <ViewNavBarContainer/>
-          </nav>
+        <nav className='nav-bar_grid'>
+          <ViewNavBarContainer/>
+        </nav>
 
-          <main className='main_grid'>
-            <Route path='/dialogs'
-                   render={() => <DialogsContainer
+        <main className='main_grid'>
+          <Route path='/dialogs'
+                 render={() => <DialogsContainer
 
-                   />}/>
-            <Route path='/posts'
-                   render={() => <ViewPostsContainer
+                 />}/>
 
-                   />}/>
-            <Route path='/users'
-                   render={() => <UsersContainer
+          <Route path='/posts/:userId?'
+                 render={() => <ViewPostsContainer
 
-                   />}/>
-          </main>
+                 />}/>
+          <Route path='/users'
+                 render={() => <UsersContainer
 
-        </div>
+                 />}/>
+        </main>
+
       </div>
+    </div>
 
   )
 }
