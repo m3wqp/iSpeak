@@ -2,3 +2,26 @@
     display: grid;
     grid-template-columns: 1fr 10fr;
 }
+.dialogs{
+
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 80% 20%;
+}
+.buttonContainer{
+    justify-content: end;
+    display: flex;
+
+}
+.button{
+    color: #94C2ED;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #F2F5F8;
+}
+.form{
+
+}

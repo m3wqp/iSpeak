@@ -2,12 +2,12 @@ import React from "react";
 import style from "./User.Module.css";
 import userIcon from "../../../assets/img/userDefault.png";
 import {NavLink} from "react-router-dom";
-import {usersApi} from "../../../api/api";
+
 
 
 const User = (props) => {
 
-  debugger
+
 
   const addUser = () => {
     props.addUser()

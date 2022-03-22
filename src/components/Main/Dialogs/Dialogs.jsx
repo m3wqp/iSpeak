@@ -2,19 +2,48 @@ import React from "react";
 import Message from "./Message/Message";
 import MessageProfile from "./MessageProfile/MessageProfile";
 import style from "./Dialogs.module.css"
+import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, required} from "../../../utility/validate";
+import {TextareaControl} from "../../../formControl/FormControl";
+
+const maxLength20 = maxLengthCreator(10)
+
+
+const AddMessageForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} className={style.form} >
+      <Field
+        placeholder="Введите текст..."
+        component={TextareaControl}
+        name='messageInput'
+        validate={[required, maxLength20]}
+      />
+
+      <div className={style.buttonContainer}>
+        <button
+          className={style.button}
+        >
+          Add Message
+        </button>
+      </div>
+
+
+    </form>
+  )
+}
+
+const AddMessageFormRedux = reduxForm({
+  form: "addMessageForm"
+})
+(AddMessageForm)
 
 
 const Dialogs = (props) => {
 
-
-
-  let addMessage = () => {
-   props.addMessage()
+  const addNewMessage = (value) => {
+    props.addMessage(value.messageInput)
   }
 
- let onMessageChange = (event) =>{
-    props.onMessageChange(event)
- }
 
   let giveProfile = props.user.map(profile => <MessageProfile id={profile.id} name={profile.user}/>);
   let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);
@@ -26,35 +55,19 @@ const Dialogs = (props) => {
         <div>
           {giveProfile}
         </div>
-        <div>
-          {ViewMessage}
-          <div className="input-group mb-3 mt-5">
-
-            <input type="text"
-                   className="form-control"
-                   placeholder="Введите текст..."
-                   aria-label="Введите текст..."
-                   aria-describedby="button-addon2"
-                   onChange={onMessageChange}
-                   value={props.messages.newMessageText}
-            />
-
-            <button
-              className="btn btn-outline-primary p"
-              type="button"
-              id="button-addon2"
-              onClick={ addMessage }>
-
-              Add Message
-
-            </button>
+        <div className={style.dialogs}>
+          <div>
+            {ViewMessage}
           </div>
+          <div>
+            <AddMessageFormRedux onSubmit={addNewMessage}/>
+          </div>
+
         </div>
-
       </div>
-
     </>
   );
 }
+
 
 export default Dialogs;

@@ -1,6 +1,9 @@
+import {statusAPI, usersApi} from "../../api/api";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_PROFILE = 'SET_PROFILE';
+const SET_USER_STATUS = 'SET_USER_STATUS';
 
 let initialState = {
 
@@ -27,18 +30,22 @@ let initialState = {
 
   postText: '',
 
-  proFilePost:null,
+  proFilePost: null,
+
+  status: "",
 
 }
+
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
       return {
         ...state,
         postText: '',
-        postData: [...state.postData, {id: 5, name: 'Anton', lastname: 'Ml-bb', post: state.postText}]
+        postData: [...state.postData, {id: 5, name: 'Anton', lastname: 'Ml-bb', post: action.newPostText}]
       }
     }
+
     case UPDATE_NEW_POST_TEXT : {
 
       return {
@@ -52,6 +59,11 @@ const postReducer = (state = initialState, action) => {
         ...state, proFilePost: action.newProfile
       }
     }
+    case SET_USER_STATUS : {
+      return {
+        ...state, status: action.status
+      }
+    }
     default:
       return state;
   }
@@ -60,7 +72,37 @@ const postReducer = (state = initialState, action) => {
 }
 
 export const onPostChangeActionCreator = (inputValue) => ({type: UPDATE_NEW_POST_TEXT, newText: inputValue})
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const setProfile = (newProfile) => ({type: SET_PROFILE , newProfile})
+export const addPostActionCreator = (newPostText) => ({type: ADD_POST, newPostText})
+export const setProfile = (newProfile) => ({type: SET_PROFILE, newProfile})
+export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
+
+
+export const setProfilePost = (userId) => {
+  return (dispatch) => {
+    usersApi.postProfile(userId)
+      .then(response => {
+        dispatch(setProfile(response.data))
+      })
+  }
+}
+export const getStatus = (userId) => {
+  return (dispatch) => {
+    statusAPI.getStatus(userId)
+      .then(response => {
+        dispatch(setUserStatus(response.data))
+      })
+  }
+}
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    statusAPI.updateStatus(status)
+      .then(response => {
+        if (response.data.resultCode === 0) {
+          dispatch(setUserStatus(status))
+        }
+      })
+  }
+}
+
 
 export default postReducer;

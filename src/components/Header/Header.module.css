@@ -4,7 +4,12 @@
     align-items: center;
     background-color: #fff;
 }
-
+.header_block__navLink{
+    display: flex;
+    align-items: center;
+}.header_block__navLink img{
+    margin-left: 1em;
+}
 
 .header_container__icon {
     margin-left: 4em;

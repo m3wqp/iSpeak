@@ -1,7 +1,9 @@
 import React from "react";
 import Dialogs from "./Dialogs";
-import {addMessageActionCreator, onMessageChangeActionCreator} from "../../../state/reducers/dialogReducer";
+import {addMessageActionCreator} from "../../../state/reducers/dialogReducer";
 import {connect} from "react-redux";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
 
@@ -10,23 +12,28 @@ import {connect} from "react-redux";
 let mapStateToProps = (state) => {
   return{
     user: state.profileCon.userProfile,
-    messages: state.dialogCon
+    messages: state.dialogCon,
+    auth: state.auth.isAuth
   }
 }
 
 let mapDispatchToProps = (dispatch) =>{
   return{
-    addMessage:() => {
-      dispatch(addMessageActionCreator())
+    addMessage:(valueMessageElement) => {
+      dispatch(addMessageActionCreator(valueMessageElement))
     },
-    onMessageChange:(event) => {
-      let newMessage = event.target.value
-      dispatch(onMessageChangeActionCreator(newMessage))
-    }
+
   }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+compose(
+  withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Dialogs)
 
 
-export default DialogsContainer;
+
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Dialogs);

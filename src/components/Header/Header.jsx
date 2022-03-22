@@ -1,9 +1,14 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import style from "./Header.module.css"
+import logoutSvg from '../../assets/img/logout.svg'
 
 
 const Header = (props) => {
+
+const logout = () =>{
+    props.logout();
+  }
 
   return (
 
@@ -28,10 +33,14 @@ const Header = (props) => {
 
       <div className={style.header_btn}>
         {
-          props.auth ? <NavLink activeClassName={style.active_login__link} className={style.header_btn__link}
-                                to={'/login'}>Профиль</NavLink>
-          : <NavLink activeClassName={style.active_login__link} className={style.header_btn__link}
-                     to={'/login'}>Login</NavLink>
+          props.auth.isAuth
+            ? <div className={style.header_block__navLink}><NavLink activeClassName={style.active_login__link} className={style.header_btn__link}
+                            to={'/login'}>Профиль</NavLink>
+            <div onClick={logout}><img src={logoutSvg}/></div>
+
+          </div>
+            : <NavLink activeClassName={style.active_login__link} className={style.header_btn__link}
+                       to={'/login'}>Login</NavLink>
         }
 
       </div>

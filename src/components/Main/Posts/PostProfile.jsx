@@ -1,13 +1,14 @@
 import React from "react";
 import Spinner from "../../../common/Spinner";
 import userDefault from "../../../assets/img/userDefault.png"
-
+import ProfileStatus from "./ProfileStatus"
 
 const PostProfile = (props) => {
-  debugger
+
   if(!props.profile){
     return <Spinner/>
   }
+
 
   return(
     <div style={{display:'flex'}}>
@@ -17,7 +18,7 @@ const PostProfile = (props) => {
       <div>
         <span>{props.profile.aboutMe}</span>
         <span>{props.profile.fullName}</span>
-
+      <ProfileStatus status={props.status} updateStatus={props.getUserStatus}/>
       </div>
     </div>
   )

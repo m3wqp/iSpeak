@@ -1,34 +1,39 @@
 import React from "react";
 import ViewPosts from "./ViewPosts";
-import {addPostActionCreator, onPostChangeActionCreator,setProfile} from "../../../state/reducers/postReducer";
+import {
+  addPostActionCreator, getStatus,
+  onPostChangeActionCreator,
+  setProfile,
+  setProfilePost, updateStatus
+} from "../../../state/reducers/postReducer";
 import {connect} from "react-redux";
-import axios from "axios";
 import PostProfile from "./PostProfile";
-import {withRouter} from "react-router-dom";
+import { withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 
-
-class PostComponent extends React.Component{
+class PostComponent extends React.Component {
 
 
   componentDidMount() {
 
     let userId = this.props.match.params.userId
-    if (!userId){
-      userId = 15;
+    if (!userId) {
+      userId = this.props.authorizedUserId;
+        if(!userId){
+          this.props.history.push("/login")
+        }
     }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+ userId)
-      .then(response => {
-        this.props.setProfile(response.data)
-        console.log(response.data)
-      })
+    this.props.setProfilePost(userId)
+    this.props.getStatus(userId)
   }
 
-  render(){
-    console.log(this.props)
-    return(
+  render() {
+
+    return (
       <>
-        <PostProfile profile={this.props.proFilePost}/>
+        <PostProfile getUserStatus={this.props.updateStatus} status={this.props.status} profile={this.props.proFilePost}/>
         <ViewPosts
           {...this.props}
         />
@@ -38,16 +43,20 @@ class PostComponent extends React.Component{
 
 }
 
+
 let mapStateToProps = (state) => {
   return {
     userPost: state.postCon,
-    proFilePost: state.postCon.proFilePost
+    proFilePost: state.postCon.proFilePost,
+    status: state.postCon.status,
+    authorizedUserId: state.auth.id,
+    auth: state.auth.isAuth
   }
 }
 
-let WithRouterPostComponent = withRouter(PostComponent)
 
-const ViewPostsContainer = connect(mapStateToProps,{addPostActionCreator,onPostChangeActionCreator,setProfile})(WithRouterPostComponent);
-
-
-export default ViewPostsContainer;
+export default compose(
+  withAuthRedirect,
+  withRouter,
+  connect(mapStateToProps, {addPostActionCreator, onPostChangeActionCreator, setProfile, setProfilePost, getStatus , updateStatus})
+)(PostComponent)

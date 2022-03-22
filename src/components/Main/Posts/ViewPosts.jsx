@@ -1,5 +1,8 @@
 import React from "react";
 import Posts from "./Posts";
+import {Field, reduxForm} from "redux-form";
+import {TextareaControl} from "../../../formControl/FormControl";
+import {maxLengthCreator, required} from "../../../utility/validate";
 
 
 const ViewPosts = (props) => {
@@ -9,40 +12,54 @@ const ViewPosts = (props) => {
                                                                 lastname={post.lastname}
                                                                 post={post.post}/>)
 
-  let onAddPostChange = () => {
-    props.addPostActionCreator()
-  }
 
-  let onTextPostChange = (event) => {
-    let textValue = event.target.value
-    props.onPostChangeActionCreator(textValue)
-  }
 
-  return (
-    <div>
-      <div className="input-group mb-3 mt-5">
+  const maxLength20 = maxLengthCreator(10)
 
-        <input type="text"
+  const FormPost = (props) =>{
+    return(
+      <form onSubmit={props.handleSubmit} >
+
+        <Field type="text"
                className="form-control"
                placeholder="Введите текст..."
                aria-label="Введите текст..."
                aria-describedby="button-addon2"
-               onChange={onTextPostChange}
-               value={props.userPost.postText}
+               component={TextareaControl}
+               name={'postValue'}
+               validate={[required, maxLength20]}
 
         />
+<div>
+  <button
+    className="btn btn-outline-primary"
+    id="button-addon2"
+  >
 
-        <button
-          className="btn btn-outline-primary"
-          type="button"
-          id="button-addon2"
-          onClick={onAddPostChange}>
+    Add Post
 
-          Add Post
+  </button>
 
-        </button>
-      </div>
+</div>
+
+      </form>
+    )
+  }
+
+  const FormReduxPost = reduxForm({
+    form:"postForm"
+  })(FormPost)
+
+  const addPost = (value) =>{
+    props.addPostActionCreator(value.postValue)
+  }
+
+  return (
+    <div>
+
+      <FormReduxPost onSubmit={addPost}/>
       {propPostData}
+
     </div>
   )
 }
