@@ -6,17 +6,17 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utility/validate";
 import {TextareaControl} from "../../../formControl/FormControl";
 
-const maxLength20 = maxLengthCreator(10)
+const maxLength1000 = maxLengthCreator(1000)
 
 
 const AddMessageForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit} className={style.form} >
+    <form onSubmit={props.handleSubmit} className={style.form}>
       <Field
         placeholder="Введите текст..."
         component={TextareaControl}
         name='messageInput'
-        validate={[required, maxLength20]}
+        validate={[required, maxLength1000]}
       />
 
       <div className={style.buttonContainer}>
@@ -45,21 +45,43 @@ const Dialogs = (props) => {
   }
 
 
-  let giveProfile = props.user.map(profile => <MessageProfile id={profile.id} name={profile.user}/>);
-  let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);
+  let giveProfile = props.user.map(profile => <MessageProfile online={profile.online} photo={profile.photo}
+                                                              id={profile.id} name={profile.user}/>);
+/*  let ViewMessage = props.messages.userMessage.map(messages => <Message message={messages.message}/>);*/
 
 
   return (
     <>
       <div className={style.dialogsContainer}>
-        <div>
+        <div className={style.profileMessageContainer}>
           {giveProfile}
         </div>
+
         <div className={style.dialogs}>
           <div>
-            {ViewMessage}
+
+
+            <div className={style.chatHeader}>
+
+              <div className={style.ChatContactName}>
+                <img className={style.chatHeaderImg} src={props.user[1].photo} alt=""/>
+                <div className={style.chatInfo}>
+                  <b>{props.user[1].user}</b>
+                  <span>Выбирает Стикер ....</span>
+                </div>
+              </div>
+              <img className={style.chatIconPatrik}
+                   src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453900Fav256x25632.png" alt=""/>
+
+            </div>
+
+
+            <Message userMessage={props.messages.userMessage}/>
+
           </div>
-          <div>
+
+
+          <div className={style.fromChat}>
             <AddMessageFormRedux onSubmit={addNewMessage}/>
           </div>
 

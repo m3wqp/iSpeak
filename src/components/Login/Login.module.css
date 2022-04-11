@@ -1,3 +1,83 @@
-.formError{
+.formError {
     border: 3px solid red;
+}
+
+.formModule {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.inputBlock{
+    margin-left: 1em;
+}
+.workSearches {
+    display: flex;
+    align-items: center;
+}
+
+.workSearches input {
+    margin-left: 1em;
+}
+
+.contactBlock {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contentModuleForm {
+    background-color: #d3e4e4;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 30%;
+}
+.contentModuleForm b {
+    margin-left: 5px;
+}
+
+.contentModuleForm input {
+    border: solid 1px #787878;
+}
+
+.contentModuleForm textarea {
+    border: solid 1px #787878;
+}
+.closeIcon img{
+    height: 30px;
+    width: 30px;
+}
+
+.jobControl {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.headerForm{
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox div {
+    width: auto;
+}
+.btnBlock{
+    display: flex;
+    justify-content: center;
+}
+.btn{
+    width: 60%;
+    margin: 1em;
+    padding: 10px;
+    background-color: aliceblue;
+    color: black;
+    border-radius: 20px;
+    font-size: 20px;
 }

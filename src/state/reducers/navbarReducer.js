@@ -3,7 +3,7 @@ let initialState = {
   navBar: [
     {link: '/users', name: 'Пользователи'},
     {link: '/dialogs', name: 'Диалоги'},
-    {link: '/posts', name: 'Записи'},
+    {link: '/posts', name: 'Записи Профиля'},
   ]
 }
 

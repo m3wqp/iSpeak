@@ -5,63 +5,63 @@ import {TextareaControl} from "../../../formControl/FormControl";
 import {maxLengthCreator, required} from "../../../utility/validate";
 
 
-const ViewPosts = (props) => {
+
+const ViewPosts = React.memo((props) => {
 
 
-  let propPostData = props.userPost.postData.map(post => <Posts name={post.name}
-                                                                lastname={post.lastname}
-                                                                post={post.post}/>)
+    let propPostData = props.userPost.postData.map(post => <Posts name={post.name}
+                                                                  lastname={post.lastname}
+                                                                  post={post.post}/>)
 
+    const maxLength20 = maxLengthCreator(10)
 
+    const FormPost = (props) => {
+      return (
 
-  const maxLength20 = maxLengthCreator(10)
+        <form onSubmit={props.handleSubmit}>
 
-  const FormPost = (props) =>{
-    return(
-      <form onSubmit={props.handleSubmit} >
+          <Field type="text"
+                 className="form-control"
+                 placeholder="Введите текст..."
+                 aria-label="Введите текст..."
+                 aria-describedby="button-addon2"
+                 component={TextareaControl}
+                 name={'postValue'}
+                 validate={[required, maxLength20]}
 
-        <Field type="text"
-               className="form-control"
-               placeholder="Введите текст..."
-               aria-label="Введите текст..."
-               aria-describedby="button-addon2"
-               component={TextareaControl}
-               name={'postValue'}
-               validate={[required, maxLength20]}
+          />
+          <div>
+            <button
+              className="btn btn-outline-primary"
+              id="button-addon2"
+            >
 
-        />
-<div>
-  <button
-    className="btn btn-outline-primary"
-    id="button-addon2"
-  >
+              Add Post
 
-    Add Post
+            </button>
 
-  </button>
+          </div>
 
-</div>
-
-      </form>
-    )
-  }
+        </form>
+      )
+    }
 
   const FormReduxPost = reduxForm({
-    form:"postForm"
+    form: "postForm"
   })(FormPost)
 
-  const addPost = (value) =>{
-    props.addPostActionCreator(value.postValue)
+    const addPost = (value) => {
+      props.addPostActionCreator(value.postValue)
+    }
+
+    return (
+      <div>
+
+        <FormReduxPost onSubmit={addPost}/>
+        {propPostData}
+
+      </div>
+    )
   }
-
-  return (
-    <div>
-
-      <FormReduxPost onSubmit={addPost}/>
-      {propPostData}
-
-    </div>
-  )
-}
-
+)
 export default ViewPosts

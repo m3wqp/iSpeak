@@ -7,18 +7,27 @@ import {
   setUser,
   unfollow, unFollowThunk
 } from "../../../state/reducers/usersReducer";
-import User from "./User";
+import Users from "./Users";
 import Feather from "../../../common/Spinner";
+import {
+  getCountUser,
+  getCurrentPage, getFollowingInProgress,
+  getIsFetching,
+  getTotalCount,
+  getUser
+} from "../../../state/selectors/users-selectors";
 
 
 class UserComponent extends React.Component {
 
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.countUser)
+    const {currentPage, countUser} = this.props
+    this.props.getUsers(currentPage, countUser)
   }
 
   onChangeCurrentPage = (currentPage) => {
-    this.props.getUsers(currentPage, this.props.countUser)
+    const {countUser} = this.props
+    this.props.getUsers(currentPage, countUser)
   }
 
   addUser = () => {
@@ -33,7 +42,7 @@ class UserComponent extends React.Component {
       {this.props.isFetching ? <Feather/> : null}
 
 
-      <User
+      <Users
         addUser={this.addUser}
         totalCount={this.props.totalCount}
         countUser={this.props.countUser}
@@ -53,18 +62,29 @@ class UserComponent extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    user: state.users,
-    countUser: state.users.countUser,
-    totalCount: state.users.totalCount,
-    currentPage: state.users.currentPage,
-    isFetching: state.users.isFetching,
-    followingInProgress: state.users.followingInProgress,
+    user: getUser(state),
+    countUser: getCountUser(state),
+    totalCount: getTotalCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    followingInProgress: getFollowingInProgress(state),
   }
 }
 
 
 const UsersContainer = connect(mapStateToProps,
-  {setUser, unfollow, addUserAction, follow, isFetchingAC, setCurrentPage, isToggleFollowAC, getUsers , followThunk,unFollowThunk})
+  {
+    setUser,
+    unfollow,
+    addUserAction,
+    follow,
+    isFetchingAC,
+    setCurrentPage,
+    isToggleFollowAC,
+    getUsers,
+    followThunk,
+    unFollowThunk
+  })
 (UserComponent)
 
 export default UsersContainer;

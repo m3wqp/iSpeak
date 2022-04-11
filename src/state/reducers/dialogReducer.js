@@ -4,10 +4,8 @@ const ADD_MESSAGE = 'ADD-MESSAGE';
 let initialState = {
 
   userMessage: [
-    {id: 1, message: 'Привет'},
-    {id: 2, message: 'Аууу'},
-    {id: 3, message: 'Как дела'},
-    {id: 4, message: 'Очнись'},
+    {id: 1, name: "Me", message: 'Добрый день! Я Только начинаю свой путь во Frontend'},
+    {id: 4, name: "Me", message: 'В Поисках Развития и Интересных задач'},
   ],
 
 
@@ -20,8 +18,7 @@ const dialogReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        newMessageText: '',
-        userMessage: [...state.userMessage, {id: 4, message: action.message}]
+        userMessage: [...state.userMessage, {id: 4, name: "Me", message: action.message}]
       }
 
     }

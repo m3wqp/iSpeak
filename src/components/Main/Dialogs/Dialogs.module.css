@@ -3,15 +3,21 @@
     grid-template-columns: 1fr 10fr;
 }
 .dialogs{
-
-    height: 90vh;
+    background: #F2F5F8;
+    height: 93vh;
     display: grid;
     grid-template-rows: 80% 20%;
 }
+
 .buttonContainer{
     justify-content: end;
     display: flex;
 
+}
+
+.profileMessageContainer{
+    background-color: #444753;
+    height: 93vh;
 }
 .button{
     color: #94C2ED;
@@ -22,6 +28,36 @@
     font-weight: bold;
     background: #F2F5F8;
 }
-.form{
-
+.chatHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 2px solid white;
+}
+.chatInfo{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1em;
+    padding-top: 5px;
+}
+.chatInfo span{
+    font-size: 13px;
+    color: #787878;
+}
+.ChatContactName{
+    display: flex;
+}
+.chatHeaderImg{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: solid 4px green;
+}
+.chatIconPatrik{
+    width: 20px;
+    height: 20px;
+}
+.fromChat{
+    padding: 20px;
+    border-top: 2px solid white;
 }

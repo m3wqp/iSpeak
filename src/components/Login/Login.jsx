@@ -1,35 +1,41 @@
 import React from 'react'
-import {Field, reduxForm} from "redux-form";
-import {InputControl} from "../../formControl/FormControl";
+import { reduxForm} from "redux-form";
+import {createField, InputControl} from "../../formControl/FormControl";
 import {maxLengthCreator, required} from "../../utility/validate";
 import {connect} from "react-redux";
-import authReducer, {login, logout} from "../../state/reducers/auth-Reducer";
+import  {login, logout} from "../../state/reducers/auth-Reducer";
 import {Redirect} from "react-router-dom";
 import style from "./Login.module.css"
 
 
 const  maxLength10 = maxLengthCreator(30)
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit,error,captchaUrl}) => {
 
   return (
-    <form onSubmit={props.handleSubmit} action="">
-      <div>
-        <Field placeholder={"Логин"} name={"email"} component={InputControl} validate={[required, maxLength10]}/>
-      </div>
-      <div>
-        <Field placeholder={"Пароль"} type={'password'} name={"password"} component={InputControl} validate={[required, maxLength10]}/>
-      </div>
-      <div>
-        <Field component={"input"} name={"rememberMe"} type={"checkbox"}/> Запомнить меня
-      </div>
-      {props.error && <div className={style.formError}>
-        <span>{props.error}</span>
+    <form onSubmit={handleSubmit} action="">
+      {createField("Логин", "email", InputControl , [required, maxLength10],{},'','m3wqp')}
+      {createField("Пароль", "password", InputControl , [required, maxLength10],{type:"password",value:'123qwe'} )}
+<div className={style.checkbox}>
+  {createField(null, "rememberMe", InputControl , null, {type:"checkbox"}, "Запомнить меня")}
+</div>
+
+
+      {captchaUrl && <img src={captchaUrl}/>}
+      {captchaUrl && createField("symbols from image", "captcha", InputControl ,[required, maxLength10], )}
+
+      {error && <div className={style.formError}>
+        <span>{error}</span>
       </div>}
       <div>
         <button>
           Отправить
         </button>
+      </div>
+
+      <div>
+        <div>Логин: m3wqp@mail.ru</div>
+        <div>Пароль: 123qwe</div>
       </div>
     </form>
   )
@@ -44,9 +50,9 @@ const LoginReduxForm  = reduxForm({
 
 
 const Login = (props) => {
-  debugger
+
   const onSubmit = (formData) => {
-    props.login(formData.email , formData.password , formData.rememberMe)
+    props.login(formData.email , formData.password , formData.rememberMe,formData.captcha)
   }
 
   if (props.isAuth){
@@ -59,13 +65,14 @@ const Login = (props) => {
       <h1>
         Логин
       </h1>
-      <LoginReduxForm onSubmit={onSubmit}/>
+      <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
     </div>
   )
 }
 
 
 const mapStateToProps = (state) => ({
+  captchaUrl: state.auth.captchaUrl,
   isAuth:state.auth.isAuth
 })
 

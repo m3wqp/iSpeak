@@ -16,7 +16,7 @@
     flex-direction: column;
 }
 .btn{
-    border: solid 2px green;
+    border: solid 2px #86BB71;
     margin-top: 1em;
     height: 2em;
     background-color: greenyellow;
@@ -25,14 +25,11 @@
 }
 
 .btn_unFollow{
-    border: solid 2px darkred;
+    border: solid 2px #E38968;
     margin-top: 1em;
     height: 2em;
-    background-color: red;
+    background-color: #E38968;
     border-radius: 20px;
     margin-right: 1em;
 }
 
-.btn_active{
-    background: red;
-}

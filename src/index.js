@@ -2,22 +2,18 @@ import React from 'react';
 import store from './state/redux'
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
+import MainApp from "./App";
 
 
 let rerenderEntireTree = (props) => {
   ReactDOM.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App test={store}/>
-        </Provider>
-      </BrowserRouter>
-    </React.StrictMode>,
+
+
+          <MainApp />
+
+    ,
 
     document.getElementById('root')
   );

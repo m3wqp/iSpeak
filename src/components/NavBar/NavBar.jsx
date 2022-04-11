@@ -15,7 +15,7 @@ const NavBar = (props) => {
         })}
 
       </ul>
-      <div className={style.nav_footer}>footer</div>
+{/*      <div className={style.nav_footer}>footer</div>*/}
     </div>
 
   )

@@ -1,0 +1,52 @@
+.profileMessageMain {
+    background-color: #444753;
+}
+.messageProfileBlock a {
+    display: flex;
+    text-decoration: none;
+}
+.messageProfileBlock img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: solid 4px #787878;
+}
+.linkContent{
+    display: flex;
+    margin: 1em 3em 0 2em;
+}
+.status{
+    padding-left: 10px;
+    display: flex;
+    padding-top: 5px;
+    color: black;
+    flex-direction: column;
+}
+.status span{
+    color: #787878;
+   font-size: 13px;
+}
+
+.circleOffline{
+    display: flex;
+    align-items: center;
+    background-color: #E38968;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+.circleOnline{
+    display: flex;
+    align-items: center;
+    background-color: #86BB71;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+
+}
+.statusVisit{
+    display: flex;
+    align-items: center;
+}

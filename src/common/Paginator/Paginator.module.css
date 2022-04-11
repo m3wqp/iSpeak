@@ -1,0 +1,12 @@
+.btn_active{
+    background: #E38968;
+}
+.paginatorContainer{
+ margin-top: 1em;
+}
+.paginatorContainer button{
+    margin-left: 5px;
+    color: #787878;
+    border-radius: 5px;
+    border: solid 1px #787878
+}
