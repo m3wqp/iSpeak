@@ -14,10 +14,25 @@
     justify-content: center;
 
 }
+.inputBlockContainer{
+    margin-top: 30px;
+    display: flex;
+}
+
+.inputBlockContainer div{
+    width: 10%;
+    color: #787878;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
 
 .inputBlock {
     margin-left: 1em;
 }
+
+
+
 
 .workSearches {
     display: flex;
@@ -72,6 +87,7 @@
 
 .checkbox div {
     width: auto;
+
 }
 
 .btnBlock {
@@ -80,54 +96,143 @@
 }
 
 .btn {
-    width: 60%;
-    margin: 1em;
-    padding: 10px;
-    background-color: aliceblue;
-    color: black;
-    border-radius: 20px;
-    font-size: 20px;
+    margin: 2em 0 2em 4em;
+    border-radius: 10%;
+    background-color: transparent;
+    border: 2px solid #787878;
+    padding: 7px;
+    color: #787878;
+    font-weight: bold;
 }
 
 .btn:hover {
-    box-shadow: 200px 0 0 0 rgba(0, 0, 0, .3) inset;
+    background-color: #b3d7ff ;
 }
 
 .formContainer {
+    position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    left: 100px;
 }
 
 .formLoginContent {
-    border-radius: 30px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 10px;
 }
-.formLoginContent{
+
+.inputContainer {
+    margin: 2em;
+}
+
+.formLoginContent img {
+    border-radius: 10px 10px 0 0;
+}
+
+.inputName {
     display: flex;
-    flex-direction: column;
-
-
 }
 
-.formLoginContent div {
-    margin-right: 1em;
-    margin-left: 1em;
-}
-
-.fieldContent input {
-    margin-top: 10px;
+.input {
+    width: 80%;
+    border: none;
     outline: none;
-    height: 50px;
-    border-radius: 20px;
-    border: solid 3px #787878;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: transparent;
+    border-bottom: 2px #787878 solid;
 }
+
+.input:focus {
+    border-bottom: 2px #0f5132 solid;
+
+}
+
+.checkbox {
+    margin-top: 1em;
+    margin-left: 4.3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.customCheckbox > input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.customCheckbox > span {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+
+.customCheckbox > span::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 0.25em;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+
+.customCheckbox > input:not(:disabled):not(:checked) + span:hover::before {
+    border-color: #b3d7ff;
+}
+
+
+.customCheckbox > input:not(:disabled):active + span::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+
+
+.customCheckbox > input:focus + span::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+.customCheckbox > input:focus:not(:checked) + span::before {
+    border-color: #80bdff;
+}
+
+
+.customCheckbox > input:checked + span::before {
+    border-color: #0b76ef;
+    background-color: #0b76ef;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+.customCheckbox > input:disabled + span::before {
+    background-color: #e9ecef;
+}
+
+
+.block {
+    border: 1px solid #80bdff;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+.block::before, .block::after {
+    content: '';
+    position: absolute;
+    left: 20px; bottom: -20px;
+    border: 10px solid transparent;
+    border-top: 10px solid #80bdff;
+}
+.block::after {
+    border-top: 10px solid white;
+    bottom: -19px;
+}
+

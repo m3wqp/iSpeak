@@ -69,7 +69,7 @@ const ProfileInfo = ({profile, setEditMode, isOwner}) => {
         </div>
       </div>
       <div>
-        {isOwner && <button className={style.button} onClick={setEditMode}>Изменить</button>}
+        {isOwner && <button className={style.button} onClick={setEditMode}>Изменить Профиль</button>}
       </div>
     </div>
   )

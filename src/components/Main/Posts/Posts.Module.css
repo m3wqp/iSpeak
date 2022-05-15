@@ -1,53 +1,61 @@
-.postAvatar{
+.mainViewContainer {
+    display: flex;
+    background: linear-gradient(to bottom, rgb(235, 237, 244) 30%, white 70%);
+}
+
+.postAvatar {
     grid-area: Avatar;
     width: 80px;
     height: 100%;
 }
-.postContainer{
+
+.postContainer {
     display: flex;
     margin-top: 20px;
     border: 1px solid #787878;
 }
-.postContent{
+
+.postContent {
     margin-left: 15px;
 }
-.postSpan{
+
+.postSpan {
     grid-area: PostSpan;
     font-size: 12px;
 }
 
-.postText{
+.postText {
     margin-top: 1em;
     grid-area: PostText;
 }
 
 .button {
-    text-decoration: none;
-    display: inline-block;
-    color: white;
-    padding: 5px 10px;
+    background-color: transparent;
     border-radius: 10px;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-    transition: .5s;
+    margin: 1em;
+    font-size: 13px;
 }
+
 .button:hover {
-    background-position: right center;
+
 }
-.infoContainer{
+
+.infoContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.infoName{
+
+.infoName {
     font-size: 30px;
 }
-.infoContactContainer{
+
+.infoContactContainer {
 
     margin: 1em;
     font-size: 18px;
 }
-.infoContactContainer b{
+
+.infoContactContainer b {
     font-size: 20px;
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-import {reduxForm} from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import {createField, InputControl} from "../../formControl/FormControl";
 import {maxLengthCreator, required} from "../../utility/validate";
 import {connect} from "react-redux";
 import {login, logout} from "../../state/reducers/auth-Reducer";
 import {Redirect} from "react-router-dom";
 import style from "./Login.module.css"
-
+import headerImg from '../../assets/img/headerForm.jpg'
 
 const maxLength10 = maxLengthCreator(30)
 
@@ -14,28 +14,46 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
 
   return (
     <form className={style.formContainer} onSubmit={handleSubmit}>
-
+      {/*
+      {createField("Логин", "email", InputControl, [required, maxLength10], {}, '', 'm3wqp')}
+      {createField("Пароль", "password", InputControl, [required, maxLength10], {
+        type: "password",
+        value: '123qwe'
+      })}
+ {createField(null, "rememberMe", InputControl, null, {type: "checkbox"}, "Запомнить меня")}
+      */}
 
       <div className={style.formLoginContent}>
-        <h2 style={{marginTop: "1em", marginLeft: '3em'}}>Логин</h2>
-        <div className={style.fieldContent}>
-          <div>
-            <div style={{marginTop: "1em", marginLeft: '2em'}}>Логин</div>
-            {createField("Логин", "email", InputControl, [required, maxLength10], {}, '', 'm3wqp')}
+
+
+        <img src={headerImg} alt=""/>
+
+        <div className={style.inputContainer}>
+          <div className={style.inputBlockContainer}>
+            <div>Логин</div>
+            <Field className={style.input} name={'email'} value={'m3wqp'} component={'input'}/>
           </div>
-          <div>
-            <div style={{marginTop: "1em", marginLeft: '2em'}}>Пароль</div>
-            {createField("Пароль", "password", InputControl, [required, maxLength10], {
-              type: "password",
-              value: '123qwe'
-            })}
+
+          <div className={style.inputBlockContainer}>
+            <div>Пароль</div>
+            <Field className={style.input} name={'password'} value={'m3wqp'} component={'input'} type={'password'}/>
+          </div>
+
+          <div className={style.checkbox}>
+            <label className={style.customCheckbox}>
+              <input type="checkbox" name="rememberMe"/>
+              <span>Запомнить меня</span>
+            </label>
+            <span style={{color: '#787878'}}>Забыли Пароль?</span>
+
+          </div>
+
+          <button className={style.btn}>Войти</button>
+          <div className={style.block}>
+            <b>Логин</b>: m3wqp@mail.ru
+            <b> Пароль</b>: 123qwe
           </div>
         </div>
-
-        <div style={{marginTop: "1em", marginLeft: '2em'}} className={style.checkbox}>
-          {createField(null, "rememberMe", InputControl, null, {type: "checkbox"}, "Запомнить меня")}
-        </div>
-
 
         {captchaUrl && <img src={captchaUrl}/>}
         {captchaUrl && createField("symbols from image", "captcha", InputControl, [required, maxLength10],)}
@@ -44,15 +62,8 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
         {error && <div className={style.formError}>
           <span>{error}</span>
         </div>}
-        <div>
-          <button style={{marginTop: "1em", marginLeft: '3em'}} className={style.btn}>
-            Отправить
-          </button>
-        </div>
-        <div>
-          <div>Логин: m3wqp@mail.ru</div>
-          <div>Пароль: 123qwe</div>
-        </div>
+
+
       </div>
 
 
@@ -78,9 +89,9 @@ const Login = (props) => {
 
 
   return (
-    <div>
-      <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
-    </div>
+
+    <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
+
   )
 }
 

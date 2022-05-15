@@ -21,7 +21,7 @@ const ProfileDataForm = ({profile, handleSubmit, error, closeForm}) => {
 
 
           <div className={s.jobControl}>
-            <div className={s.inputBlock}>
+            <div  className={s.inputBlock}>
               <b>Полное Имя</b> : {createField("Full Name", "fullName", InputControl, [])}
             </div>
             <div className={s.workSearches}>

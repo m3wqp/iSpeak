@@ -20,15 +20,16 @@ const PostProfile = (props) => {
   return(
     <div >
       <div  className={style.infoContainer}>
+        <div>
+          <img style={{height:"150px", borderRadius:"50%"}} src={props.profile.photos.small ? props.profile.photos.small : userDefault } alt="аватарка"/>
+        </div>
         <div className={style.infoContainer}>
           <div className={style.infoName}>{props.profile.fullName}</div>
           <div>Junior FrontEnd</div>
           <ProfileStatusHooks status={props.status} updateStatus={props.getUserStatus}/>
         </div>
 
-        <div style={{margin:"2em"}}>
-          <img style={{height:"150px", borderRadius:"50%"}} src={props.profile.photos.small ? props.profile.photos.small : userDefault } alt="аватарка"/>
-        </div>
+
         <div>
 
 

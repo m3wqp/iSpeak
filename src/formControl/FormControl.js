@@ -31,7 +31,7 @@ export const InputControl = (props) => {
 }
 
 export const createField = (placeholder, name, component, validate, props = {}, text = '',value) => {
-  debugger
+
   return (
     <div style={{display: 'flex', alignItems: "center"}}>
       <Field placeholder={placeholder}

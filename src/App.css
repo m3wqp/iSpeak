@@ -24,7 +24,7 @@
 .nav-bar_grid {
     background-color: white;
     grid-area: navbar;
-    height: 93vh;
+    height: 100vh;
     border: 2px solid #7d98b2;
     border-top: 1px solid #7d98b2 ;
     border-top-right-radius: 15px;

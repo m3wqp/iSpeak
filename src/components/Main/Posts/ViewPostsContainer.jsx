@@ -1,5 +1,6 @@
 import React from "react";
 import ViewPosts from "./ViewPosts";
+import s from './Posts.Module.css'
 import {
   addPostActionCreator, getStatus,
   onPostChangeActionCreator, saveFormProfile, savePhoto,
@@ -43,7 +44,7 @@ class PostComponent extends React.Component {
 
     return (
       <>
-        <div style={{display:'flex' , backgroundColor:'#ebedf4'}}>
+        <div className={s.mainViewContainer} >
 
 
         <PostProfile isOwner={!this.props.match.params.userId}
